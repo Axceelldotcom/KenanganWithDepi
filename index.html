@@ -68,8 +68,8 @@
 
         /* Styling Bagian Hero (Beranda) */
         .hero {
-            /* Latar belakang dengan overlay gelap dan gambar placeholder dinamis */
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://placehold.co/1500x500/4682B4/FFFFFF?text=Momen+Manis+Kita') no-repeat center center/cover; /* Placeholder Biru Baja */
+            /* Latar belakang dengan overlay gelap. Gambar placeholder sekarang tanpa teks. */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://placehold.co/1500x500/4682B4/4682B4') no-repeat center center/cover; /* Placeholder warna solid Biru Baja */
             color: #fff; /* Warna teks putih */
             text-align: center; /* Pusatkan teks */
             padding: 120px 0; /* Padding atas dan bawah */
@@ -80,11 +80,13 @@
             font-size: 3.5em; /* Ukuran judul besar */
             margin-bottom: 15px; /* Margin bawah untuk judul */
             letter-spacing: 2px; /* Jarak antar huruf */
+            font-weight: 800; /* Dibuat lebih tebal */
         }
 
         .hero p {
             font-size: 1.3em; /* Ukuran font paragraf */
             margin-bottom: 40px; /* Margin bawah untuk paragraf */
+            font-weight: 600; /* Dibuat lebih tebal */
         }
 
         /* Styling Tombol (Button) */
@@ -97,15 +99,22 @@
             border-radius: 30px; /* Sudut sangat membulat */
             font-weight: bold; /* Teks tebal */
             letter-spacing: 1px; /* Jarak antar huruf */
-            transition: background 0.3s ease, color 0.3s ease; /* Transisi halus saat hover */
+            transition: background 0.3s ease, color 0.3s ease, transform 0.1s ease; /* Tambah transform untuk efek tekan */
         }
 
         .btn:hover {
-            background: #f2f2f2; /* Latar belakang lebih terang saat hover */
+            background: #d0e8f7; /* Latar belakang lebih terang saat hover */
             color: #1E90FF; /* Warna teks Dodger Blue saat hover */
         }
 
-        /* Styling Bagian Galeri Foto/Video */
+        .btn:active { /* Efek saat tombol ditekan */
+            background: #9bd7f7; /* Warna latar belakang lebih gelap saat ditekan */
+            transform: translateY(2px); /* Geser tombol sedikit ke bawah */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Bayangan lebih kecil untuk efek tekan */
+        }
+
+
+        /* Styling Bagian Galeri Foto/Video Utama */
         .photo-gallery {
             padding: 60px 0; /* Padding atas dan bawah */
             background: #fff; /* Latar belakang putih */
@@ -221,7 +230,248 @@
                 grid-template-columns: 1fr; /* Hanya satu kolom di layar kecil */
             }
         }
+
+        /* --- Styling untuk Image Carousel / Slideshow --- */
+        .carousel-section {
+            background-color: #e0f2f7; /* Latar belakang biru muda */
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .carousel-section h2 {
+            color: #4682B4;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 800px; /* Lebar maksimal carousel */
+            margin: auto;
+            overflow: hidden; /* Penting untuk menyembunyikan slide yang tidak aktif */
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.8s ease-in-out; /* Transisi halus antar slide */
+        }
+
+        .carousel-slide {
+            min-width: 100%; /* Setiap slide memenuhi lebar container */
+            box-sizing: border-box;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 450px; /* Tinggi gambar carousel yang lebih besar */
+            object-fit: cover; /* Pastikan gambar terisi penuh */
+            display: block;
+        }
+
+        /* Navigasi Carousel (panah kiri/kanan) */
+        .carousel-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 2em;
+            z-index: 10; /* Pastikan di atas gambar */
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-prev {
+            left: 10px;
+        }
+
+        .carousel-next {
+            right: 10px;
+        }
+
+        /* Indikator Dot Carousel */
+        .carousel-dots {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: #4682B4; /* Biru Baja untuk dot aktif */
+        }
+
+        /* --- Styling untuk Animasi Gulir (Scroll Animation) --- */
+        .fade-in-section {
+            opacity: 0; /* Mulai tidak terlihat */
+            transform: translateY(20px); /* Mulai sedikit di bawah posisi akhir */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Transisi halus */
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1; /* Jadi terlihat penuh */
+            transform: translateY(0); /* Kembali ke posisi aslinya */
+        }
+
+        /* --- Styling untuk Ikon Media Sosial di Footer --- */
+        .social-links {
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #fff; /* Warna ikon putih */
+            font-size: 2em; /* Ukuran ikon */
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2); /* Efek membesar saat hover */
+            color: #ADD8E6; /* Warna ikon saat hover */
+        }
+
+        /* --- Styling untuk Music Player --- */
+        .music-player-wrapper {
+            position: fixed; /* Posisi tetap di layar */
+            bottom: 20px; /* Jarak dari bawah */
+            right: 20px; /* Jarak dari kanan */
+            z-index: 1000; /* Pastikan di atas elemen lain */
+            display: flex; /* Untuk menata tombol dan kotak player */
+            flex-direction: column; /* Tombol dan kotak player menumpuk */
+            align-items: flex-end; /* Sejajarkan ke kanan */
+            gap: 10px; /* Jarak antara tombol dan kotak player */
+        }
+
+        .music-player-container {
+            background-color: rgba(70, 130, 180, 0.9); /* Biru Baja semi-transparan */
+            padding: 10px 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Untuk meratakan elemen di dalam kotak */
+            gap: 10px;
+            width: 250px; /* Lebar default kotak player */
+            cursor: pointer; /* Menunjukkan bahwa seluruh kotak bisa diklik */
+            transition: background-color 0.3s ease; /* Transisi warna background */
+        }
+
+        .music-player-container:hover {
+             background-color: rgba(70, 130, 180, 1); /* Warna lebih solid saat hover */
+        }
+
+        .music-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Jarak antar tombol kontrol */
+        }
+
+        .music-player-container button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2em; /* Ukuran ikon tombol play/pause/prev/next */
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.1s ease;
+            padding: 5px; /* Memberi area klik yang lebih besar */
+            border-radius: 50%; /* Membuat tombol lebih bulat */
+        }
+
+        .music-player-container button:hover {
+            color: #ADD8E6;
+            transform: scale(1.1); /* Efek membesar saat hover */
+        }
+
+        .music-player-container button:active {
+            transform: scale(0.9); /* Efek ditekan */
+        }
+
+        .music-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Sejajarkan teks ke kiri */
+            flex-grow: 1; /* Biarkan info mengambil ruang yang tersedia */
+            overflow: hidden; /* Memastikan teks scrolling tidak keluar */
+        }
+
+        #currentSongTitle {
+            color: white;
+            font-size: 0.95em;
+            white-space: nowrap; /* Jangan memutus baris teks */
+            overflow: hidden; /* Sembunyikan teks yang melebihi batas */
+            text-overflow: ellipsis; /* Tambahkan elipsis jika teks terlalu panjang */
+            max-width: 150px; /* Lebar maksimal judul lagu */
+            /* Transisi untuk properti yang diubah oleh JavaScript, jika ada */
+            transition: transform 0s linear; /* Tidak ada transisi saat posisi berubah */
+            /* Animasi akan ditambahkan secara dinamis oleh JS */
+        }
+
+        /* Definisi animasi untuk scrolling teks */
+        @keyframes scrollText {
+            0% { transform: translateX(0%); } /* Mulai dari posisi awal */
+            100% { transform: translateX(calc(-100% - 10px)); } /* Geser ke kiri hingga teks hilang, tambah sedikit ruang */
+        }
+
+        /* Class yang akan diterapkan saat teks perlu di-scroll */
+        .scrolling-text {
+            animation: scrollText linear infinite;
+        }
+
+        /* Mengatur durasi animasi berdasarkan panjang teks */
+        /* Ini akan diatur dinamis di JavaScript, ini hanya default/fallback */
+        .scrolling-text[data-duration] {
+            animation-duration: var(--scroll-duration, 10s);
+        }
+
+        #musicTime { /* Mengganti #musicStatus dengan #musicTime */
+            color: #f0f0f0; /* Warna lebih terang untuk status */
+            font-size: 0.8em;
+        }
+
+        /* Responsif untuk player musik */
+        @media (max-width: 768px) {
+            .music-player-wrapper {
+                bottom: 10px;
+                right: 10px;
+                gap: 5px;
+            }
+            .music-player-container {
+                width: auto; /* Biarkan lebar menyesuaikan konten */
+                padding: 8px 12px;
+            }
+            .music-player-container button {
+                font-size: 1.1em;
+            }
+            #currentSongTitle {
+                max-width: 100px; /* Batasan lebar judul lagu di mobile */
+                font-size: 0.85em;
+            }
+            #musicTime { /* Mengganti #musicStatus dengan #musicTime */
+                font-size: 0.75em;
+            }
+        }
     </style>
+    <!-- Font Awesome untuk ikon media sosial dan ikon play/pause -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
@@ -232,6 +482,7 @@
             <nav>
                 <ul>
                     <li><a href="#home">Beranda</a></li>
+                    <li><a href="#carousel">Momen Game</a></li>
                     <li><a href="#gallery">Galeri Momen</a></li>
                 </ul>
             </nav>
@@ -245,7 +496,57 @@
             <div class="container">
                 <h2>Axceell & Depi</h2>
                 <p>Selamat datang di album digital momen-momen manis perjalanan cinta kami. Setiap video dan gambar adalah kenangan yang berharga.</p>
-                <a href="#gallery" class="btn">Lihat Semua Moment !</a>
+                <a href="#gallery" class="btn">Lihat Semua Momen !</a>
+            </div>
+        </section>
+
+        <!-- Bagian Image Carousel / Slideshow -->
+        <section id="carousel" class="carousel-section">
+            <div class="container">
+                <h2>Kilasan Momen dalam Game</h2>
+                <div class="carousel-container">
+                    <div class="carousel-slides">
+                        <!-- Slide 1 -->
+                        <div class="carousel-slide">
+                            <img src="https://i.imgur.com/pqhMmkO.jpeg" alt="Momen Roblox">
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="carousel-slide">
+                            <img src="https://i.imgur.com/E9YGXFV.jpeg" alt="Momen Ceria 2">
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="carousel-slide">
+                            <img src="https://i.imgur.com/6pUDNhH.jpeg" alt="Momen Ceria 3">
+                        </div>
+                        <!-- Slide 4 -->
+                        <div class="carousel-slide">
+                            <img src="https://i.imgur.com/rYKErDj.jpeg" alt="Momen Ceria 4">
+                        </div>
+                        <!-- Slide 5 -->
+                        <div class="carousel-slide">
+                            <img src="https://i.imgur.com/JUSLPPq.jpeg" alt="Momen Ceria 5">
+                        </div>
+                        <!-- Slide 6 -->
+                        <div class="carousel-slide">
+                            <img src="https://i.imgur.com/diiAslH.jpeg" alt="Momen Ceria 6">
+                        </div>
+                        <!-- Slide 7 -->
+                        <div class="carousel-slide">
+                            <img src="https://i.imgur.com/eXyhfvm.jpeg" alt="Momen Ceria 7">
+                        </div>
+                    </div>
+                    <button class="carousel-nav-btn carousel-prev">&#10094;</button>
+                    <button class="carousel-nav-btn carousel-next">&#10095;</button>
+                </div>
+                <div class="carousel-dots">
+                    <span class="dot active" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                    <span class="dot" onclick="currentSlide(6)"></span>
+                    <span class="dot" onclick="currentSlide(7)"></span>
+                </div>
             </div>
         </section>
 
@@ -255,7 +556,8 @@
                 <h2>Momen-Momen Indah Bersama</h2>
                 <div class="gallery-grid">
                     <!-- Item Galeri: Foto Kelulusan (Video) -->
-                    <div class="gallery-item">
+                    <!-- Tambahkan kelas 'fade-in-section' untuk animasi gulir -->
+                    <div class="gallery-item fade-in-section">
                         <div class="media-container">
                             <!-- Video kelulusan dari Google Drive Anda -->
                             <!-- ********************** PENTING! ********************** -->
@@ -266,8 +568,7 @@
                             <!-- Tanpa izin ini, video tidak akan bisa dimuat dan diputar. -->
                             <!-- ******************************************************* -->
                             <video controls preload="metadata">
-                                 <source src="https://raw.githubusercontent.com/Axceelldotcom/Nawaf-Portofolio/a0ee271b019ab7dccd6c9b288fb6cf9676c10258/WhatsApp%20Video%202025-06-26%20at%2010.20.43.mp4" 
-            type="video/mp4"  type="video/mp4">
+                                <source src="https://raw.githubusercontent.com/Axceelldotcom/Nawaf-Portofolio/a0ee271b019ab7dccd6c9b288fb6cf9676c10258/WhatsApp%20Video%202025-06-26%20at%2010.20.43.mp4" type="video/mp4">
                                 <!-- Fallback for browsers that don't support the video tag -->
                                 Maaf, browser Anda tidak mendukung tag video.
                             </video>
@@ -279,9 +580,10 @@
                     </div>
 
                     <!-- Item Galeri: Foto Kencan Pertama (Gambar) -->
-                    <div class="gallery-item">
+                    <!-- Tambahkan kelas 'fade-in-section' untuk animasi gulir -->
+                    <div class="gallery-item fade-in-section">
                         <div class="media-container">
-                            <!-- Placeholder gambar untuk kencan pertama. Ganti URL ini dengan link gambar langsung dari Imgur/lainnya -->
+                            <!-- Gambar kencan pertama. Ganti URL ini dengan link gambar langsung dari Imgur/lainnya -->
                             <img src="https://i.imgur.com/NGhDV8R.jpeg" alt="Foto Kencan Pertama">
                         </div>
                         <div class="content-text">
@@ -291,9 +593,10 @@
                     </div>
 
                     <!-- Item Galeri: Liburan di Pantai (Gambar) -->
-                    <div class="gallery-item">
+                    <!-- Tambahkan kelas 'fade-in-section' untuk animasi gulir -->
+                    <div class="gallery-item fade-in-section">
                         <div class="media-container">
-                            <!-- Placeholder gambar untuk liburan pantai. Ganti URL ini dengan link gambar langsung dari Imgur/lainnya -->
+                            <!-- Gambar liburan pantai. Ganti URL ini dengan link gambar langsung dari Imgur/lainnya -->
                             <img src="https://i.imgur.com/CYtPCfA.jpeg" alt="Liburan Pantai">
                         </div>
                         <div class="content-text">
@@ -311,9 +614,259 @@
     <!-- Bagian Footer Website -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Axceell. Kisah Kita Abadi.</p>
+            <p>&copy; 2025 Axceell & Depi. Kisah Kita Abadi.</p>
+            <div class="social-links">
+                <!-- Link Instagram untuk Axceell -->
+                <a href="https://www.instagram.com/waf.ovr.thr?igsh=YzljYTk1ODg3Zg==" target="_blank" title="Instagram Axceell">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <!-- Link Instagram untuk Depi -->
+                <a href="https://www.instagram.com/210mdvnxxz?igsh=YzljYTk1ODg3Zg==" target="_blank" title="Instagram Depi">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
         </div>
     </footer>
+
+    <!-- Fixed Music Player Container -->
+    <div class="music-player-wrapper">
+        <div class="music-player-container" id="musicPlayerContainer">
+            <div class="music-controls">
+                <button id="prevTrackButton" title="Lagu Sebelumnya"><i class="fas fa-backward"></i></button>
+                <button id="playPauseButton" title="Putar/Jeda"><i class="fas fa-play"></i></button>
+                <button id="nextTrackButton" title="Lagu Selanjutnya"><i class="fas fa-forward"></i></button>
+            </div>
+            <div class="music-info">
+                <span id="currentSongTitle">Loading...</span>
+                <span id="musicTime">0:00 / 0:00</span> <!-- Diubah dari musicStatus ke musicTime -->
+            </div>
+            <audio id="backgroundMusic" loop></audio>
+        </div>
+    </div>
+
+    <!-- JavaScript Script for Carousel, Scroll Animation, and Music Player -->
+    <script>
+        // --- JavaScript untuk Carousel ---
+        let slideIndex = 0; // Indeks slide saat ini
+        const slides = document.querySelectorAll('.carousel-slide'); // Ambil semua elemen slide
+        const dots = document.querySelectorAll('.dot'); // Ambil semua elemen dot
+        const totalSlides = slides.length; // Jumlah total slide
+
+        // Fungsi untuk menampilkan slide tertentu
+        function showSlides(n) {
+            // Nonaktifkan semua dot
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            // Atur slideIndex agar berputar (loop)
+            if (n >= totalSlides) { slideIndex = 0; } // Kembali ke awal jika sudah di akhir
+            if (n < 0) { slideIndex = totalSlides - 1; } // Kembali ke akhir jika sudah di awal
+
+            // Geser kontainer slide untuk menampilkan slide yang aktif
+            document.querySelector('.carousel-slides').style.transform = `translateX(-${slideIndex * 100}%)`;
+            // Aktifkan dot yang sesuai dengan slide aktif
+            dots[slideIndex].classList.add('active');
+        }
+
+        // Fungsi untuk menggeser slide ke depan/belakang
+        function plusSlides(n) {
+            slideIndex += n; // Tambah atau kurangi indeks
+            showSlides(slideIndex); // Tampilkan slide baru
+        }
+
+        // Fungsi untuk langsung menuju slide tertentu dari dot
+        function currentSlide(n) {
+            slideIndex = n - 1; // Sesuaikan dengan indeks berbasis 0
+            showSlides(slideIndex); // Tampilkan slide
+        }
+
+        // Event listener untuk tombol navigasi
+        document.querySelector('.carousel-prev').addEventListener('click', () => plusSlides(-1));
+        document.querySelector('.carousel-next').addEventListener('click', () => plusSlides(1));
+
+        // Auto-play slideshow
+        let autoPlayInterval = setInterval(() => plusSlides(1), 5000); // Ganti slide setiap 5 detik
+
+        // Berhenti auto-play saat kursor di atas carousel
+        document.querySelector('.carousel-container').addEventListener('mouseover', () => {
+            clearInterval(autoPlayInterval);
+        });
+
+        // Lanjutkan auto-play saat kursor keluar dari carousel
+        document.querySelector('.carousel-container').addEventListener('mouseout', () => {
+            autoPlayInterval = setInterval(() => plusSlides(1), 5000);
+        });
+
+        // Tampilkan slide pertama saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlides(slideIndex);
+        });
+
+        // --- JavaScript untuk Animasi Gulir (Fade-in/Slide-up) ---
+        // Ambil semua elemen dengan kelas 'fade-in-section'
+        const fadeInElements = document.querySelectorAll('.fade-in-section');
+
+        // Opsi untuk Intersection Observer
+        const observerOptions = {
+            root: null, // Mengamati elemen relatif terhadap viewport
+            rootMargin: '0px',
+            threshold: 0.2 // Pemicu saat 20% dari elemen terlihat
+        };
+
+        // Buat Intersection Observer baru
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                // Jika elemen terlihat di viewport
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible'); // Tambahkan kelas 'is-visible' untuk memicu animasi
+                    observer.unobserve(entry.target); // Hentikan pengamatan setelah animasi dipicu sekali
+                }
+            });
+        }, observerOptions);
+
+        // Amati setiap elemen yang ingin dianimasikan
+        fadeInElements.forEach(el => observer.observe(el));
+
+
+        // --- JavaScript untuk Smooth Scrolling ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Mencegah perilaku lompatan default
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth' // Aktifkan gulir mulus
+                });
+            });
+        });
+
+        // --- JavaScript untuk Pemutar Musik ---
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const musicPlayerContainer = document.getElementById('musicPlayerContainer'); // Kontainer untuk klik
+        const playPauseButton = document.getElementById('playPauseButton');
+        const prevTrackButton = document.getElementById('prevTrackButton'); // Tombol Sebelumnya
+        const nextTrackButton = document.getElementById('nextTrackButton'); // Tombol Selanjutnya
+        const currentSongTitle = document.getElementById('currentSongTitle'); // Tampilan judul lagu
+        const musicTime = document.getElementById('musicTime'); // Diubah dari musicStatus ke musicTime
+
+        // Daftar lagu (ubah URL dan Judul Lagu sesuai keinginan Anda!)
+        const playlist = [
+            { title: "Becky G, Natti Natasha – Sin Pijama", src: "https://github.com/Axceelldotcom/KenanganWithDepi/raw/refs/heads/main/Becky%20G,%20Natti%20Natasha%20%E2%80%93%20Sin%20Pijama.mp3" },
+            { title: "Descer", src: "https://github.com/Axceelldotcom/KenanganWithDepi/raw/refs/heads/main/Descer.mp3" },
+            { title: "Doja Cat - Wine Pon You", src: "https://github.com/Axceelldotcom/KenanganWithDepi/raw/refs/heads/main/Doja%20Cat%20-%20Wine%20Pon%20You.mp3" },
+            // Tambahkan lebih banyak lagu di sini
+        ];
+
+        let currentTrackIndex = 0; // Indeks lagu yang sedang diputar
+
+        // Fungsi untuk format waktu (misal: 0:00 menjadi 00:00)
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = Math.floor(seconds % 60);
+            return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+        }
+
+        // Fungsi untuk memperbarui tampilan durasi waktu
+        function updateMusicTime() {
+            if (backgroundMusic.duration) {
+                const current = formatTime(backgroundMusic.currentTime);
+                const total = formatTime(backgroundMusic.duration);
+                musicTime.textContent = `${current} / ${total}`;
+            } else {
+                musicTime.textContent = '0:00 / 0:00'; // Default jika durasi belum tersedia
+            }
+        }
+
+        // Fungsi untuk memuat dan memutar lagu berdasarkan indeks
+        function loadAndPlayTrack(index) {
+            currentTrackIndex = index;
+            if (currentTrackIndex >= playlist.length) {
+                currentTrackIndex = 0; // Kembali ke awal playlist
+            }
+            if (currentTrackIndex < 0) {
+                currentTrackIndex = playlist.length - 1; // Kembali ke akhir playlist
+            }
+
+            backgroundMusic.src = playlist[currentTrackIndex].src;
+            currentSongTitle.textContent = playlist[currentTrackIndex].title; // Perbarui judul lagu
+
+            // Hapus animasi sebelumnya (jika ada)
+            currentSongTitle.style.animation = 'none';
+            currentSongTitle.offsetHeight; /* Trigger reflow */
+            currentSongTitle.style.animation = null;
+
+            // Periksa apakah teks terlalu panjang untuk digulir
+            if (currentSongTitle.scrollWidth > currentSongTitle.clientWidth) {
+                const duration = currentSongTitle.scrollWidth / 50; // Kecepatan scrolling (px per detik)
+                currentSongTitle.style.setProperty('--scroll-duration', `${duration}s`);
+                currentSongTitle.classList.add('scrolling-text');
+            } else {
+                currentSongTitle.classList.remove('scrolling-text');
+            }
+
+            // Perbarui waktu segera setelah lagu dimuat (mungkin butuh beberapa saat untuk duration)
+            updateMusicTime();
+
+            backgroundMusic.play().catch(error => {
+                console.log('Autoplay diblokir atau ada masalah memuat lagu:', error);
+                updatePlayPauseIcon(); // Pastikan ikon play muncul jika musik tidak langsung putar
+            });
+            updatePlayPauseIcon(); // Perbarui ikon play/pause
+        }
+
+        // Fungsi untuk memperbarui ikon tombol play/pause
+        function updatePlayPauseIcon() {
+            if (backgroundMusic.paused) {
+                playPauseButton.innerHTML = '<i class="fas fa-play"></i>'; // Ikon Play
+            } else {
+                playPauseButton.innerHTML = '<i class="fas fa-pause"></i>'; // Ikon Pause
+            }
+        }
+
+        // Event listener untuk SELURUH kotak pemutar musik (play/pause)
+        musicPlayerContainer.addEventListener('click', (event) => {
+            // Pastikan klik tidak berasal dari tombol next/prev (karena mereka punya listener sendiri)
+            if (event.target.closest('#prevTrackButton') || event.target.closest('#nextTrackButton')) {
+                return; // Jangan lakukan apa-apa jika klik berasal dari tombol next/prev
+            }
+
+            if (backgroundMusic.paused) {
+                backgroundMusic.play();
+            } else {
+                backgroundMusic.pause();
+            }
+            // updatePlayPauseIcon() akan dipanggil oleh event 'play' atau 'pause'
+        });
+
+        // Event listener untuk tombol Lagu Sebelumnya
+        prevTrackButton.addEventListener('click', () => {
+            loadAndPlayTrack(currentTrackIndex - 1);
+        });
+
+        // Event listener untuk tombol Lagu Selanjutnya
+        nextTrackButton.addEventListener('click', () => {
+            loadAndPlayTrack(currentTrackIndex + 1);
+        });
+
+        // Perbarui ikon saat musik mulai atau berhenti secara otomatis
+        backgroundMusic.addEventListener('play', updatePlayPauseIcon);
+        backgroundMusic.addEventListener('pause', updatePlayPauseIcon);
+
+        // Event listener untuk memperbarui waktu saat lagu sedang diputar
+        backgroundMusic.addEventListener('timeupdate', updateMusicTime);
+        // Event listener untuk memperbarui durasi total saat lagu baru dimuat
+        backgroundMusic.addEventListener('durationchange', updateMusicTime);
+
+        backgroundMusic.addEventListener('ended', () => {
+            // Ketika lagu selesai, putar lagu selanjutnya
+            loadAndPlayTrack(currentTrackIndex + 1);
+        });
+
+
+        // Saat halaman dimuat, coba putar lagu pertama dari playlist
+        document.addEventListener('DOMContentLoaded', () => {
+            backgroundMusic.volume = 0.5; // Atur volume awal agar tidak terlalu keras (0.0 - 1.0)
+            loadAndPlayTrack(0); // Memuat lagu pertama
+        });
+    </script>
 
 </body>
 </html>
