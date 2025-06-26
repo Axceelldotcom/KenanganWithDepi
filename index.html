@@ -45,8 +45,9 @@
         }
 
         /* Additional padding on body so content is not covered by fixed header */
+        /* This will be set dynamically by JavaScript based on header height */
         body {
-            padding-top: 100px; /* Adjust according to header height + a little margin */
+            padding-top: 0; /* Reset this here, JS will set it */
         }
 
 
@@ -580,7 +581,7 @@
             top: 0;
             bottom: 0;
             left: 50%;
-            margin-left: -2px; /* Pusatkan garis (setengah dari lebar garis) */
+            margin-left: -2px; /* Center the line (half of line width) */
             border-radius: 2px;
         }
 
@@ -639,7 +640,7 @@
             height: 25px;
             background-color: #ADD8E6; /* Light blue */
             border: 4px solid #4682B4; /* Steel blue */
-            top: 19.5px; /* Disesuaikan untuk posisi vertikal yang lebih simetris */
+            top: 19.5px; /* Adjusted for more symmetrical vertical position */
             border-radius: 50%;
             z-index: 1; /* Ensure it's above the line */
         }
@@ -651,7 +652,7 @@
         }
 
         .timeline-item:nth-child(odd)::after {
-            right: -12.5px; /* Disesuaikan agar dot benar-benar di tengah garis vertikal */
+            right: -12.5px; /* Adjusted to center dot on vertical line */
             left: auto; /* Ensure no conflict with 'left: 50%' from container::after */
         }
 
@@ -666,7 +667,7 @@
         }
 
         .timeline-item:nth-child(even)::after {
-            left: -12.5px; /* Disesuaikan agar dot benar-benar di tengah garis vertikal */
+            left: -12.5px; /* Adjusted to center dot on vertical line */
         }
 
         .timeline-item:nth-child(even) .timeline-content {
@@ -708,7 +709,7 @@
             }
 
             .timeline-item::after {
-                left: 7.5px !important; /* Disesuaikan untuk posisi dot di mobile */
+                left: 7.5px !important; /* Adjusted for dot position on mobile */
             }
 
             .timeline-item .timeline-content::before {
@@ -1166,15 +1167,28 @@
             const mainHeader = document.getElementById('mainHeader');
             let lastScrollY = window.scrollY;
 
+            // Set body padding-top dynamically based on header height
+            document.body.style.paddingTop = `${mainHeader.offsetHeight + 20}px`; // Added 20px extra margin
+
             window.addEventListener('scroll', () => {
-                if (window.scrollY > lastScrollY) {
-                    // Scrolling down
-                    mainHeader.classList.add('header-hidden');
+                let currentScrollY = window.scrollY;
+                const headerHeight = mainHeader.offsetHeight;
+
+                // Only apply hide/show logic if scrolling beyond the header's initial height
+                if (currentScrollY > headerHeight) {
+                    if (currentScrollY > lastScrollY) {
+                        // Scrolling down
+                        mainHeader.classList.add('header-hidden');
+                    } else {
+                        // Scrolling up
+                        mainHeader.classList.remove('header-hidden');
+                    }
                 } else {
-                    // Scrolling up
+                    // If at the very top or scrolling within header's initial height, always show header
                     mainHeader.classList.remove('header-hidden');
                 }
-                lastScrollY = window.scrollY;
+
+                lastScrollY = currentScrollY;
             });
         });
     </script>
