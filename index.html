@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisah Kita - Momen Manis Bersama</title>
+    <!-- Styling CSS disematkan langsung di file HTML ini untuk pratinjau yang mudah -->
+    <style>
+        /* Styling Umum untuk Seluruh Halaman */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font modern */
+            margin: 0;
+            line-height: 1.7; /* Jarak antar baris teks agar mudah dibaca */
+            background-color: #f8f8f8; /* Warna latar belakang abu-abu terang */
+            color: #333; /* Warna teks abu-abu gelap */
+        }
+
+        /* Container Konten Utama (untuk mengatur lebar) */
+        .container {
+            width: 85%; /* Lebar konten, sedikit lebih lebar untuk galeri */
+            margin: auto; /* Pusatkan konten */
+            overflow: hidden; /* Mengatasi float */
+            padding: 20px 0; /* Padding atas dan bawah */
+        }
+
+        /* Styling Header */
+        header {
+            background: #4682B4; /* Biru Baja untuk header */
+            color: #fff; /* Warna teks putih */
+            padding: 1rem 0; /* Padding atas dan bawah */
+            border-bottom: #87CEEB 3px solid; /* Garis bawah biru langit */
+            text-align: center; /* Pusatkan teks header */
+        }
+
+        header h1 {
+            margin: 0; /* Hapus margin default */
+            display: inline-block; /* Membuat H1 sejajar dengan navigasi di desktop */
+        }
+
+        header nav {
+            margin-top: 10px; /* Jarak navigasi dari H1 */
+        }
+
+        header ul {
+            margin: 0; /* Hapus margin default */
+            padding: 0; /* Hapus padding default */
+            list-style: none; /* Hapus bullet point */
+            display: flex; /* Gunakan flexbox untuk item menu */
+            justify-content: center; /* Pusatkan item menu */
+        }
+
+        header li {
+            padding: 0 20px; /* Jarak antar item menu */
+        }
+
+        header a {
+            color: #fff; /* Warna tautan putih */
+            text-decoration: none; /* Hapus garis bawah */
+            text-transform: uppercase; /* Ubah teks menjadi huruf kapital */
+            font-size: 1em; /* Ukuran font tautan */
+            font-weight: bold; /* Teks tebal */
+            transition: color 0.3s ease; /* Transisi warna yang halus saat hover */
+        }
+
+        header a:hover {
+            color: #ADD8E6; /* Biru Muda saat hover */
+        }
+
+        /* Styling Bagian Hero (Beranda) */
+        .hero {
+            /* Latar belakang dengan overlay gelap dan gambar placeholder dinamis */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://placehold.co/1500x500/4682B4/FFFFFF?text=Momen+Manis+Kita') no-repeat center center/cover; /* Placeholder Biru Baja */
+            color: #fff; /* Warna teks putih */
+            text-align: center; /* Pusatkan teks */
+            padding: 120px 0; /* Padding atas dan bawah */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Efek bayangan teks */
+        }
+
+        .hero h2 {
+            font-size: 3.5em; /* Ukuran judul besar */
+            margin-bottom: 15px; /* Margin bawah untuk judul */
+            letter-spacing: 2px; /* Jarak antar huruf */
+        }
+
+        .hero p {
+            font-size: 1.3em; /* Ukuran font paragraf */
+            margin-bottom: 40px; /* Margin bawah untuk paragraf */
+        }
+
+        /* Styling Tombol (Button) */
+        .btn {
+            display: inline-block; /* Membuat tombol sebagai blok inline */
+            color: #4682B4; /* Warna teks tombol Biru Baja */
+            background: #fff; /* Latar belakang tombol putih */
+            padding: 12px 25px; /* Padding tombol */
+            text-decoration: none; /* Hapus garis bawah */
+            border-radius: 30px; /* Sudut sangat membulat */
+            font-weight: bold; /* Teks tebal */
+            letter-spacing: 1px; /* Jarak antar huruf */
+            transition: background 0.3s ease, color 0.3s ease; /* Transisi halus saat hover */
+        }
+
+        .btn:hover {
+            background: #f2f2f2; /* Latar belakang lebih terang saat hover */
+            color: #1E90FF; /* Warna teks Dodger Blue saat hover */
+        }
+
+        /* Styling Bagian Galeri Foto/Video */
+        .photo-gallery {
+            padding: 60px 0; /* Padding atas dan bawah */
+            background: #fff; /* Latar belakang putih */
+            text-align: center; /* Pusatkan teks */
+        }
+
+        .photo-gallery h2 {
+            color: #4682B4; /* Warna judul Biru Baja */
+            margin-bottom: 40px; /* Margin bawah untuk judul */
+            font-size: 2.5em; /* Ukuran judul */
+        }
+
+        /* Grid untuk Item Galeri */
+        .gallery-grid {
+            display: grid; /* Gunakan CSS Grid untuk layout */
+            /* Kolom responsif: minimal 300px, ruang tersisa didistribusikan secara merata */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; /* Jarak antar item galeri */
+            justify-content: center; /* Pusatkan grid */
+        }
+
+        /* Styling untuk Setiap Item Galeri (Kontainer Utama) */
+        .gallery-item {
+            background: #fff; /* Latar belakang putih */
+            border: 1px solid #eee; /* Garis tepi tipis */
+            border-radius: 10px; /* Sudut membulat */
+            overflow: hidden; /* Pastikan konten tidak keluar dari sudut membulat */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Efek bayangan */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi halus saat hover */
+            display: flex; /* Gunakan flexbox untuk tata letak vertikal */
+            flex-direction: column; /* Susun item dalam kolom */
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px); /* Geser sedikit ke atas saat hover */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); /* Bayangan lebih gelap saat hover */
+        }
+
+        /* Kontainer baru untuk rasio aspek media (video/gambar) */
+        .media-container {
+            position: relative; /* Diperlukan untuk posisi absolut media di dalamnya */
+            width: 100%;
+            padding-bottom: 177.77%; /* Rasio aspek 9:16 (tinggi/lebar * 100%) untuk potret */
+            height: 0; /* Penting untuk mengosongkan tinggi dan membiarkan padding menentukannya */
+            overflow: hidden; /* Memastikan media mengikuti border-radius jika ada */
+            border-bottom: 1px solid #eee; /* Pemisah antara media dan teks */
+        }
+
+        /* Styling untuk Elemen Video dan Gambar agar mengisi kontainer rasio aspek */
+        .media-container video,
+        .media-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Mengisi area tanpa distorsi, memotong jika perlu */
+            display: block; /* Menghapus ruang di bawah media */
+        }
+
+        /* Styling untuk Konten Teks di bawah media */
+        .content-text {
+            padding: 15px 10px 20px 10px; /* Padding di dalam bagian teks */
+            text-align: center;
+            flex-grow: 1; /* Biarkan konten teks mengambil ruang yang tersisa jika diperlukan */
+        }
+
+        .content-text h3 {
+            margin: 0 0 5px 0; /* Sesuaikan margin untuk h3 di dalam content-text */
+            color: #444; /* Warna judul foto/video */
+            font-size: 1.5em; /* Ukuran judul foto/video */
+        }
+
+        .content-text p {
+            font-size: 0.95em; /* Ukuran deskripsi foto/video */
+            color: #666; /* Warna deskripsi foto/video */
+            margin: 0; /* Hapus margin paragraf default */
+        }
+
+        /* Footer Styling */
+        footer {
+            background: #4682B4; /* Latar belakang Biru Baja */
+            color: #fff; /* Warna teks putih */
+            text-align: center; /* Pusatkan teks */
+            padding: 25px 0; /* Padding atas dan bawah */
+            margin-top: 40px; /* Jarak dari konten di atasnya */
+            font-size: 0.9em; /* Ukuran font footer */
+        }
+
+        /* Desain Responsif (untuk Layar Kecil seperti Ponsel) */
+        @media (max-width: 768px) {
+            /* Header di layar kecil */
+            header nav ul {
+                flex-direction: column; /* Item menu menumpuk secara vertikal */
+                align-items: center; /* Pusatkan item menu */
+            }
+
+            header nav ul li {
+                padding: 5px 0; /* Jarak vertikal antar item menu */
+            }
+
+            /* Hero di layar kecil */
+            .hero h2 {
+                font-size: 2.5em; /* Ukuran judul hero lebih kecil */
+            }
+
+            /* Galeri di layar kecil */
+            .photo-gallery h2 {
+                font-size: 2em; /* Ukuran judul galeri lebih kecil */
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr; /* Hanya satu kolom di layar kecil */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bagian Header Website -->
+    <header>
+        <div class="container">
+            <h1>Kisah Kita</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#gallery">Galeri Momen</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Bagian Utama Konten Website -->
+    <main>
+        <!-- Bagian Hero (Halaman Beranda) -->
+        <section id="home" class="hero">
+            <div class="container">
+                <h2>Axceell & Depi</h2>
+                <p>Selamat datang di album digital momen-momen manis perjalanan cinta kami. Setiap video dan gambar adalah kenangan yang berharga.</p>
+                <a href="#gallery" class="btn">Lihat Semua Moment !</a>
+            </div>
+        </section>
+
+        <!-- Bagian Galeri Video/Gambar -->
+        <section id="gallery" class="photo-gallery">
+            <div class="container">
+                <h2>Momen-Momen Indah Bersama</h2>
+                <div class="gallery-grid">
+                    <!-- Item Galeri: Foto Kelulusan (Video) -->
+                    <div class="gallery-item">
+                        <div class="media-container">
+                            <!-- Video kelulusan dari Google Drive Anda -->
+                            <!-- ********************** PENTING! ********************** -->
+                            <!-- Agar video ini bisa diputar, Anda HARUS memastikan bahwa di Google Drive: -->
+                            <!-- 1. File video ini (`1ow7HJFtt5zUGe3zzQGWMilF6RUlJSXQG`) diatur untuk bisa diakses oleh -->
+                            <!--    "Siapa saja yang memiliki link" (Anyone with the link). -->
+                            <!-- 2. Peran aksesnya diatur sebagai "Pelihat" (Viewer). -->
+                            <!-- Tanpa izin ini, video tidak akan bisa dimuat dan diputar. -->
+                            <!-- ******************************************************* -->
+                            <video controls preload="metadata">
+                                 <source src="https://raw.githubusercontent.com/Axceelldotcom/Nawaf-Portofolio/a0ee271b019ab7dccd6c9b288fb6cf9676c10258/WhatsApp%20Video%202025-06-26%20at%2010.20.43.mp4" 
+            type="video/mp4"  type="video/mp4">
+                                <!-- Fallback for browsers that don't support the video tag -->
+                                Maaf, browser Anda tidak mendukung tag video.
+                            </video>
+                        </div>
+                        <div class="content-text">
+                            <h3>Momen Kelulusan</h3>
+                            <p>Kebahagiaan di hari kelulusanmu! Turut bangga melihatmu mencapai mimpi.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item Galeri: Foto Kencan Pertama (Gambar) -->
+                    <div class="gallery-item">
+                        <div class="media-container">
+                            <!-- Placeholder gambar untuk kencan pertama. Ganti URL ini dengan link gambar langsung dari Imgur/lainnya -->
+                            <img src="https://i.imgur.com/NGhDV8R.jpeg" alt="Foto Kencan Pertama">
+                        </div>
+                        <div class="content-text">
+                            <h3>Kencan Pertama Kita</h3>
+                            <p>Awal dari cerita indah yang tak terlupakan. Juni 2025.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item Galeri: Liburan di Pantai (Gambar) -->
+                    <div class="gallery-item">
+                        <div class="media-container">
+                            <!-- Placeholder gambar untuk liburan pantai. Ganti URL ini dengan link gambar langsung dari Imgur/lainnya -->
+                            <img src="https://i.imgur.com/CYtPCfA.jpeg" alt="Liburan Pantai">
+                        </div>
+                        <div class="content-text">
+                            <h3>Liburan Seru di Pantai</h3>
+                            <p>Tertawa lepas menikmati ombak dan senja. Musim panas 2025.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bagian Footer Website -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Axceell. Kisah Kita Abadi.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
