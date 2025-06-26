@@ -1165,6 +1165,7 @@
 
             // --- JavaScript for Auto-Hide Header ---
             const mainHeader = document.getElementById('mainHeader');
+            const homeSection = document.getElementById('home'); // Get the homepage section
             let lastScrollY = window.scrollY;
 
             // Set body padding-top dynamically based on header height
@@ -1172,19 +1173,19 @@
 
             window.addEventListener('scroll', () => {
                 let currentScrollY = window.scrollY;
-                const headerHeight = mainHeader.offsetHeight;
+                const homepageOffsetTop = homeSection.offsetTop; // Get the top position of the homepage section
 
-                // Only apply hide/show logic if scrolling beyond the header's initial height
-                if (currentScrollY > headerHeight) {
+                // Only apply hide/show logic when scrolling past the homepage section
+                if (currentScrollY > homepageOffsetTop) {
                     if (currentScrollY > lastScrollY) {
-                        // Scrolling down
+                        // Scrolling down, hide header
                         mainHeader.classList.add('header-hidden');
                     } else {
-                        // Scrolling up
+                        // Scrolling up, show header
                         mainHeader.classList.remove('header-hidden');
                     }
                 } else {
-                    // If at the very top or scrolling within header's initial height, always show header
+                    // If at or above the homepage section, always show header
                     mainHeader.classList.remove('header-hidden');
                 }
 
