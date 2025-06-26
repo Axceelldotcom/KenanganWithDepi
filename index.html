@@ -8,174 +8,188 @@
     <style>
         /* Styling Umum untuk Seluruh Halaman */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font modern */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
             margin: 0;
-            line-height: 1.7; /* Jarak antar baris teks agar mudah dibaca */
-            background-color: #f8f8f8; /* Warna latar belakang abu-abu terang */
-            color: #333; /* Warna teks abu-abu gelap */
+            line-height: 1.7; /* Line spacing for readability */
+            background-color: #f8f8f8; /* Light gray background */
+            color: #333; /* Dark gray text color */
         }
 
         /* Container Konten Utama (untuk mengatur lebar) */
         .container {
-            width: 85%; /* Lebar konten, sedikit lebih lebar untuk galeri */
-            margin: auto; /* Pusatkan konten */
-            overflow: hidden; /* Mengatasi float */
-            padding: 20px 0; /* Padding atas dan bawah */
+            width: 85%; /* Content width, slightly wider for the gallery */
+            margin: auto; /* Center the content */
+            overflow: hidden; /* Clear floats */
+            padding: 20px 0; /* Top and bottom padding */
         }
 
         /* Styling Header */
         header {
-            background: #fff; /* Latar belakang putih */
-            color: #333; /* Warna teks hitam/abu-abu gelap */
-            padding: 1.5rem 0; /* Padding atas dan bawah sedikit lebih besar */
-            border-bottom: 1px solid #eee; /* Garis bawah tipis untuk pemisah */
-            text-align: center; /* Pusatkan teks header */
-            position: sticky; /* Membuat header tetap di atas saat di-scroll */
+            background: #fff; /* White background */
+            color: #333; /* Dark gray/black text color */
+            padding: 1.5rem 0; /* Slightly larger top and bottom padding */
+            border-bottom: 1px solid #eee; /* Thin bottom border for separation */
+            text-align: center; /* Center header text */
+            position: fixed; /* Changed to fixed to allow hiding/showing */
             top: 0;
-            z-index: 100; /* Pastikan header di atas konten lain */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Bayangan lebih ringan untuk latar belakang putih */
+            left: 0;
+            width: 100%; /* Full width */
+            z-index: 100; /* Ensure header is above other content */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Lighter shadow for white background */
+            transition: transform 0.3s ease-out; /* Transition for slide out/in effect */
         }
 
+        /* Class to hide the header */
+        .header-hidden {
+            transform: translateY(-100%); /* Slide header up, out of view */
+        }
+
+        /* Additional padding on body so content is not covered by fixed header */
+        body {
+            padding-top: 100px; /* Adjust according to header height + a little margin */
+        }
+
+
         header h1 {
-            margin: 0; /* Hapus margin default */
-            font-size: 2.8em; /* Ukuran font H1 lebih besar untuk prominence */
-            letter-spacing: 3px; /* Jarak antar huruf untuk gaya */
-            font-weight: 700; /* Lebih tebal */
-            text-transform: uppercase; /* Huruf kapital semua */
-            display: block; /* Pastikan H1 di barisnya sendiri */
-            margin-bottom: 15px; /* Jarak dari navigasi */
+            margin: 0; /* Remove default margin */
+            font-size: 2.8em; /* Larger H1 font size for prominence */
+            letter-spacing: 3px; /* Letter spacing for style */
+            font-weight: 700; /* Thicker font weight */
+            text-transform: uppercase; /* All uppercase letters */
+            display: block; /* Ensure H1 is on its own line */
+            margin-bottom: 15px; /* Space from navigation */
         }
 
         header nav {
-            margin-top: 0; /* Hapus margin yang tidak perlu karena H1 sudah punya margin-bottom */
+            margin-top: 0; /* Remove unnecessary margin as H1 has margin-bottom */
         }
 
         header ul {
-            margin: 0; /* Hapus margin default */
-            padding: 0; /* Hapus padding default */
-            list-style: none; /* Hapus bullet point */
-            display: flex; /* Gunakan flexbox untuk item menu */
-            justify-content: center; /* Pusatkan item menu */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            list-style: none; /* Remove bullet points */
+            display: flex; /* Use flexbox for menu items */
+            justify-content: center; /* Center menu items */
         }
 
         header li {
-            padding: 0 18px; /* Jarak antar item menu sedikit disesuaikan */
+            padding: 0 18px; /* Slightly adjusted space between menu items */
         }
 
         header a {
-            color: #555; /* Warna tautan abu-abu gelap */
-            text-decoration: none; /* Hapus garis bawah */
-            text-transform: uppercase; /* Ubah teks menjadi huruf kapital */
-            font-size: 0.95em; /* Ukuran font tautan */
-            font-weight: bold; /* Teks tebal */
-            transition: color 0.3s ease; /* Transisi warna yang halus saat hover */
+            color: #555; /* Dark gray link color */
+            text-decoration: none; /* Remove underline */
+            text-transform: uppercase; /* Uppercase text */
+            font-size: 0.95em; /* Link font size */
+            font-weight: bold; /* Bold text */
+            transition: color 0.3s ease; /* Smooth color transition on hover */
         }
 
         header a:hover {
-            color: #4682B4; /* Biru Baja saat hover */
+            color: #4682B4; /* Steel Blue on hover */
         }
 
-        /* Styling Bagian Hero (Beranda) */
+        /* Styling for Hero Section (Homepage) */
         .hero {
-            /* Latar belakang dengan overlay gelap. Gambar placeholder sekarang tanpa teks. */
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://placehold.co/1500x500/4682B4/4682B4') no-repeat center center/cover; /* Placeholder warna solid Biru Baja */
-            color: #fff; /* Warna teks putih */
-            text-align: center; /* Pusatkan teks */
-            padding: 120px 0; /* Padding atas dan bawah */
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Efek bayangan teks */
+            /* Background with a dark overlay. Placeholder image now without text. */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://placehold.co/1500x500/4682B4/4682B4') no-repeat center center/cover; /* Steel Blue solid color placeholder */
+            color: #fff; /* White text color */
+            text-align: center; /* Center text */
+            padding: 120px 0; /* Top and bottom padding */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Text shadow effect */
         }
 
         .hero h2 {
-            font-size: 3.5em; /* Ukuran judul besar */
-            margin-bottom: 15px; /* Margin bawah untuk judul */
-            letter-spacing: 2px; /* Jarak antar huruf */
-            font-weight: 800; /* Dibuat lebih tebal */
+            font-size: 3.5em; /* Large heading size */
+            margin-bottom: 15px; /* Bottom margin for heading */
+            letter-spacing: 2px; /* Letter spacing */
+            font-weight: 800; /* Thicker font weight */
         }
 
         .hero p {
-            font-size: 1.3em; /* Ukuran font paragraf */
-            margin-bottom: 40px; /* Margin bawah untuk paragraf */
-            font-weight: 600; /* Dibuat lebih tebal */
-            max-width: 800px; /* Batasi lebar paragraf */
-            margin-left: auto; /* Pusatkan paragraf */
-            margin-right: auto; /* Pusatkan paragraf */
+            font-size: 1.3em; /* Paragraph font size */
+            margin-bottom: 40px; /* Bottom margin for paragraph */
+            font-weight: 600; /* Thicker font weight */
+            max-width: 800px; /* Limit paragraph width */
+            margin-left: auto; /* Center paragraph */
+            margin-right: auto; /* Center paragraph */
         }
 
-        /* Styling Tombol (Button) */
+        /* Styling for Buttons */
         .btn {
-            display: inline-block; /* Membuat tombol sebagai blok inline */
-            color: #4682B4; /* Warna teks tombol Biru Baja */
-            background: #fff; /* Latar belakang tombol putih */
-            padding: 12px 25px; /* Padding tombol */
-            text-decoration: none; /* Hapus garis bawah */
-            border-radius: 30px; /* Sudut sangat membulat */
-            font-weight: bold; /* Teks tebal */
-            letter-spacing: 1px; /* Jarak antar huruf */
-            transition: background 0.3s ease, color 0.3s ease, transform 0.1s ease; /* Tambah transform untuk efek tekan */
+            display: inline-block; /* Make the button an inline block */
+            color: #4682B4; /* Steel Blue button text color */
+            background: #fff; /* White button background */
+            padding: 12px 25px; /* Button padding */
+            text-decoration: none; /* Remove underline */
+            border-radius: 30px; /* Highly rounded corners */
+            font-weight: bold; /* Bold text */
+            letter-spacing: 1px; /* Letter spacing */
+            transition: background 0.3s ease, color 0.3s ease, transform 0.1s ease; /* Add transform for press effect */
         }
 
         .btn:hover {
-            background: #d0e8f7; /* Latar belakang lebih terang saat hover */
-            color: #1E90FF; /* Warna teks Dodger Blue saat hover */
+            background: #d0e8f7; /* Lighter background on hover */
+            color: #1E90FF; /* Dodger Blue text on hover */
         }
 
-        .btn:active { /* Efek saat tombol ditekan */
-            background: #9bd7f7; /* Warna latar belakang lebih gelap saat ditekan */
-            transform: translateY(2px); /* Geser tombol sedikit ke bawah */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Bayangan lebih kecil untuk efek tekan */
+        .btn:active { /* Effect when button is pressed */
+            background: #9bd7f7; /* Darker background color when pressed */
+            transform: translateY(2px); /* Shift button down slightly */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Smaller shadow for pressed effect */
         }
 
 
-        /* Styling Bagian Galeri Foto/Video Utama */
+        /* Styling for Main Photo/Video Gallery Section */
         .photo-gallery {
-            padding: 60px 0; /* Padding atas dan bawah */
-            background: #fff; /* Latar belakang putih */
-            text-align: center; /* Pusatkan teks */
+            padding: 60px 0; /* Top and bottom padding */
+            background: #fff; /* White background */
+            text-align: center; /* Center text */
         }
 
         .photo-gallery h2 {
-            color: #4682B4; /* Warna judul Biru Baja */
-            margin-bottom: 40px; /* Margin bawah untuk judul */
-            font-size: 2.5em; /* Ukuran judul */
+            color: #4682B4; /* Steel Blue heading color */
+            margin-bottom: 40px; /* Bottom margin for heading */
+            font-size: 2.5em; /* Heading font size */
         }
 
-        /* Grid untuk Item Galeri */
+        /* Grid for Gallery Items */
         .gallery-grid {
-            display: grid; /* Gunakan CSS Grid untuk layout */
-            /* Kolom responsif: minimal 300px, ruang tersisa didistribusikan secara merata */
+            display: grid; /* Use CSS Grid for layout */
+            /* Responsive columns: minimum 300px, remaining space distributed equally */
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px; /* Jarak antar item galeri */
-            justify-content: center; /* Pusatkan grid */
+            gap: 30px; /* Gap between gallery items */
+            justify-content: center; /* Center the grid */
         }
 
-        /* Styling untuk Setiap Item Galeri (Kontainer Utama) */
+        /* Styling for each Gallery Item (Main Container) */
         .gallery-item {
-            background: #fff; /* Latar belakang putih */
-            border: 1px solid #eee; /* Garis tepi tipis */
-            border-radius: 10px; /* Sudut membulat */
-            overflow: hidden; /* Pastikan konten tidak keluar dari sudut membulat */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Efek bayangan */
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi halus saat hover */
-            display: flex; /* Gunakan flexbox untuk tata letak vertikal */
-            flex-direction: column; /* Susun item dalam kolom */
+            background: #fff; /* White background */
+            border: 1px solid #eee; /* Thin border */
+            border-radius: 10px; /* Rounded corners */
+            overflow: hidden; /* Ensure content stays within rounded corners */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Shadow effect */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions on hover */
+            display: flex; /* Use flexbox for vertical layout */
+            flex-direction: column; /* Stack items in a column */
         }
 
         .gallery-item:hover {
-            transform: translateY(-5px); /* Geser sedikit ke atas saat hover */
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); /* Bayangan lebih gelap saat hover */
+            transform: translateY(-5px); /* Move slightly up on hover */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); /* Darker shadow on hover */
         }
 
-        /* Kontainer baru untuk rasio aspek media (video/gambar) */
+        /* New container for media aspect ratio (video/image) */
         .media-container {
-            position: relative; /* Diperlukan untuk posisi absolut media di dalamnya */
+            position: relative; /* Required for absolute positioning of media inside */
             width: 100%;
-            padding-bottom: 177.77%; /* Rasio aspek 9:16 (tinggi/lebar * 100%) untuk potret */
-            height: 0; /* Penting untuk mengosongkan tinggi dan membiarkan padding menentukannya */
-            overflow: hidden; /* Memastikan media mengikuti border-radius jika ada */
-            border-bottom: 1px solid #eee; /* Pemisah antara media dan teks */
+            padding-bottom: 177.77%; /* 9:16 aspect ratio (height/width * 100%) for portrait */
+            height: 0; /* Important to clear height and let padding define it */
+            overflow: hidden; /* Ensure media follows border-radius if present */
+            border-bottom: 1px solid #eee; /* Separator between media and text */
         }
 
-        /* Styling untuk Elemen Video dan Gambar agar mengisi kontainer rasio aspek */
+        /* Styling for Video and Image elements to fill aspect ratio container */
         .media-container video,
         .media-container img {
             position: absolute;
@@ -183,75 +197,75 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Mengisi area tanpa distorsi, memotong jika perlu */
-            display: block; /* Menghapus ruang di bawah media */
+            object-fit: cover; /* Fill area without distortion, cropping if necessary */
+            display: block; /* Remove space below media */
         }
 
-        /* Styling untuk Konten Teks di bawah media */
+        /* Styling for text content below media */
         .content-text {
-            padding: 15px 10px 20px 10px; /* Padding di dalam bagian teks */
+            padding: 15px 10px 20px 10px; /* Padding inside text section */
             text-align: center;
-            flex-grow: 1; /* Biarkan konten teks mengambil ruang yang tersisa jika diperlukan */
+            flex-grow: 1; /* Let text content take remaining space if needed */
         }
 
         .content-text h3 {
-            margin: 0 0 5px 0; /* Sesuaikan margin untuk h3 di dalam content-text */
-            color: #444; /* Warna judul foto/video */
-            font-size: 1.5em; /* Ukuran judul foto/video */
+            margin: 0 0 5px 0; /* Adjust margin for h3 inside content-text */
+            color: #444; /* Photo/video title color */
+            font-size: 1.5em; /* Photo/video title font size */
         }
 
         .content-text p {
-            font-size: 0.95em; /* Ukuran deskripsi foto/video */
-            color: #666; /* Warna deskripsi foto/video */
-            margin: 0; /* Hapus margin paragraf default */
+            font-size: 0.95em; /* Photo/video description font size */
+            color: #666; /* Photo/video description color */
+            margin: 0; /* Remove default paragraph margin */
         }
 
-        /* Styling Footer */
+        /* Footer Styling */
         footer {
-            background: #f8f8f8; /* Latar belakang sama dengan body */
-            color: #555; /* Warna teks abu-abu gelap */
-            padding: 40px 0 20px 0; /* Padding atas dan bawah */
-            text-align: center; /* Pusatkan teks */
-            margin-top: 50px; /* Jarak dari konten di atasnya */
-            border-top: 1px solid #eee; /* Garis tipis di atas */
+            background: #f8f8f8; /* Background same as body */
+            color: #555; /* Dark gray text color */
+            padding: 40px 0 20px 0; /* Top and bottom padding */
+            text-align: center; /* Center text */
+            margin-top: 50px; /* Space from content above */
+            border-top: 1px solid #eee; /* Thin line at the top */
         }
 
-        /* Kontainer untuk judul dan navigasi footer */
+        /* Container for footer title and navigation */
         .footer-content {
             display: flex;
-            flex-wrap: wrap; /* Mengizinkan wrap untuk responsivitas */
-            justify-content: space-between; /* Judul kiri, nav kanan */
+            flex-wrap: wrap; /* Allow wrapping for responsiveness */
+            justify-content: space-between; /* Title left, nav right */
             align-items: center;
-            max-width: 1000px; /* Lebar maksimal konten footer */
-            margin: 0 auto 20px auto; /* Pusatkan dan beri margin bawah */
-            padding: 0 20px; /* Padding samping */
+            max-width: 1000px; /* Max width for footer content */
+            margin: 0 auto 20px auto; /* Center and add bottom margin */
+            padding: 0 20px; /* Side padding */
         }
 
-        /* Styling Judul di Footer */
+        /* Styling for Footer Title */
         .footer-title {
-            font-size: 2.2em; /* Ukuran judul footer */
+            font-size: 2.2em; /* Footer title size */
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #333; /* Warna judul lebih gelap */
-            margin: 0; /* Hapus margin default */
-            flex-grow: 1; /* Biarkan tumbuh untuk mengisi ruang */
-            text-align: left; /* Rata kiri di desktop */
+            color: #333; /* Darker title color */
+            margin: 0; /* Remove default margin */
+            flex-grow: 1; /* Allow it to grow to fill space */
+            text-align: left; /* Left align on desktop */
         }
 
-        /* Navigasi di Footer */
+        /* Footer Navigation */
         .footer-nav ul {
             margin: 0;
             padding: 0;
             list-style: none;
             display: flex;
-            gap: 25px; /* Jarak antar item navigasi */
-            flex-wrap: wrap; /* Mengizinkan wrap untuk responsivitas */
-            justify-content: flex-end; /* Rata kanan di desktop */
+            gap: 25px; /* Space between navigation items */
+            flex-wrap: wrap; /* Allow wrapping for responsiveness */
+            justify-content: flex-end; /* Right align on desktop */
         }
 
         .footer-nav a {
-            color: #555; /* Warna tautan navigasi footer */
+            color: #555; /* Footer navigation link color */
             text-decoration: none;
             text-transform: uppercase;
             font-size: 0.9em;
@@ -260,64 +274,64 @@
         }
 
         .footer-nav a:hover {
-            color: #4682B4; /* Biru Baja saat hover */
+            color: #4682B4; /* Steel Blue on hover */
         }
 
-        /* Teks Copyright di Footer */
+        /* Copyright Text in Footer */
         footer p {
             font-size: 0.85em;
-            color: #777; /* Warna teks copyright lebih terang */
-            margin-top: 20px; /* Jarak dari konten di atasnya */
+            color: #777; /* Lighter copyright text color */
+            margin-top: 20px; /* Space from content above */
         }
 
 
-        /* Desain Responsif (untuk Layar Kecil seperti Ponsel) */
+        /* Responsive Design (for smaller screens like mobile phones) */
         @media (max-width: 768px) {
-            /* Header di layar kecil */
+            /* Header on small screens */
             header nav ul {
-                flex-direction: column; /* Item menu menumpuk secara vertikal */
-                align-items: center; /* Pusatkan item menu */
+                flex-direction: column; /* Menu items stack vertically */
+                align-items: center; /* Center menu items */
             }
 
             header nav ul li {
-                padding: 5px 0; /* Jarak vertikal antar item menu */
+                padding: 5px 0; /* Vertical spacing between menu items */
             }
 
-            /* Hero di layar kecil */
+            /* Hero on small screens */
             .hero h2 {
-                font-size: 2.5em; /* Ukuran judul hero lebih kecil */
+                font-size: 2.5em; /* Smaller hero title */
             }
 
-            /* Galeri di layar kecil */
+            /* Gallery on small screens */
             .photo-gallery h2 {
-                font-size: 2em; /* Ukuran judul galeri lebih kecil */
+                font-size: 2em; /* Smaller gallery title */
             }
 
             .gallery-grid {
-                grid-template-columns: 1fr; /* Hanya satu kolom di layar kecil */
+                grid-template-columns: 1fr; /* Single column on small screens */
             }
 
-            /* Responsif Footer */
+            /* Responsive Footer */
             .footer-content {
-                flex-direction: column; /* Tumpuk item secara vertikal */
-                text-align: center; /* Pusatkan teks */
+                flex-direction: column; /* Stack items vertically */
+                text-align: center; /* Center text */
             }
 
             .footer-title {
-                text-align: center; /* Pusatkan judul di mobile */
-                margin-bottom: 20px; /* Jarak dari navigasi di mobile */
+                text-align: center; /* Center title on mobile */
+                margin-bottom: 20px; /* Space from navigation on mobile */
             }
 
             .footer-nav ul {
-                flex-direction: column; /* Tumpuk navigasi vertikal */
-                gap: 10px; /* Jarak antar item navigasi di mobile */
-                justify-content: center; /* Pusatkan navigasi di mobile */
+                flex-direction: column; /* Stack navigation vertically */
+                gap: 10px; /* Space between navigation items on mobile */
+                justify-content: center; /* Center navigation on mobile */
             }
         }
 
-        /* --- Styling untuk Image Carousel / Slideshow --- */
+        /* --- Styling for Image Carousel / Slideshow --- */
         .carousel-section {
-            background-color: #e0f2f7; /* Latar belakang biru muda */
+            background-color: #e0f2f7; /* Light blue background */
             padding: 60px 0;
             text-align: center;
         }
@@ -330,31 +344,31 @@
 
         .carousel-container {
             position: relative;
-            max-width: 800px; /* Lebar maksimal carousel */
+            max-width: 800px; /* Maximum width of the carousel */
             margin: auto;
-            overflow: hidden; /* Penting untuk menyembunyikan slide yang tidak aktif */
+            overflow: hidden; /* Important for hiding inactive slides */
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
         .carousel-slides {
             display: flex;
-            transition: transform 0.8s ease-in-out; /* Transisi halus antar slide */
+            transition: transform 0.8s ease-in-out; /* Smooth transition between slides */
         }
 
         .carousel-slide {
-            min-width: 100%; /* Setiap slide memenuhi lebar container */
+            min-width: 100%; /* Each slide takes full width of container */
             box-sizing: border-box;
         }
 
         .carousel-slide img {
             width: 100%;
-            height: 450px; /* Tinggi gambar carousel yang lebih besar */
-            object-fit: cover; /* Pastikan gambar terisi penuh */
+            height: 450px; /* Taller image height for carousel */
+            object-fit: cover; /* Ensure image fills completely */
             display: block;
         }
 
-        /* Navigasi Carousel (panah kiri/kanan) */
+        /* Carousel Navigation (left/right arrows) */
         .carousel-nav-btn {
             position: absolute;
             top: 50%;
@@ -365,7 +379,7 @@
             padding: 15px;
             cursor: pointer;
             font-size: 2em;
-            z-index: 10; /* Pastikan di atas gambar */
+            z-index: 10; /* Ensure on top of images */
             border-radius: 50%;
             transition: background-color 0.3s ease;
         }
@@ -382,7 +396,7 @@
             right: 10px;
         }
 
-        /* Indikator Dot Carousel */
+        /* Carousel Dot Indicators */
         .carousel-dots {
             text-align: center;
             padding: 20px 0;
@@ -400,120 +414,120 @@
         }
 
         .dot.active {
-            background-color: #4682B4; /* Biru Baja untuk dot aktif */
+            background-color: #4682B4; /* Steel Blue for active dot */
         }
 
-        /* --- Styling untuk Animasi Gulir (Scroll Animation) --- */
+        /* --- Styling for Scroll Animation (Fade-in/Slide-up) --- */
         .fade-in-section {
-            opacity: 0; /* Mulai tidak terlihat */
-            transform: translateY(20px); /* Mulai sedikit di bawah posisi akhir */
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Transisi halus */
+            opacity: 0; /* Start invisible */
+            transform: translateY(20px); /* Start slightly below final position */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition */
         }
 
         .fade-in-section.is-visible {
-            opacity: 1; /* Jadi terlihat penuh */
-            transform: translateY(0); /* Kembali ke posisi aslinya */
+            opacity: 1; /* Become fully visible */
+            transform: translateY(0); /* Return to original position */
         }
 
-        /* --- Styling untuk Music Player --- */
+        /* --- Styling for Music Player --- */
         .music-player-wrapper {
-            position: fixed; /* Posisi tetap di layar */
-            bottom: 20px; /* Jarak dari bawah */
-            right: 20px; /* Jarak dari kanan */
-            z-index: 1000; /* Pastikan di atas elemen lain */
-            display: flex; /* Untuk menata tombol dan kotak player */
-            flex-direction: column; /* Tombol dan kotak player menumpuk */
-            align-items: flex-end; /* Sejajarkan ke kanan */
-            gap: 10px; /* Jarak antara tombol dan kotak player */
+            position: fixed; /* Fixed position on screen */
+            bottom: 20px; /* Distance from bottom */
+            right: 20px; /* Distance from right */
+            z-index: 1000; /* Ensure it's above other elements */
+            display: flex; /* To arrange buttons and player box */
+            flex-direction: column; /* Stack buttons and player box */
+            align-items: flex-end; /* Align to the right */
+            gap: 10px; /* Space between buttons and player box */
         }
 
         .music-player-container {
-            background-color: rgba(70, 130, 180, 0.9); /* Biru Baja semi-transparan */
+            background-color: rgba(70, 130, 180, 0.9); /* Semi-transparent Steel Blue */
             padding: 10px 15px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Untuk meratakan elemen di dalam kotak */
+            justify-content: space-between; /* To space out elements inside the box */
             gap: 10px;
-            width: 250px; /* Lebar default kotak player */
-            cursor: pointer; /* Menunjukkan bahwa seluruh kotak bisa diklik */
-            transition: background-color 0.3s ease; /* Transisi warna background */
+            width: 250px; /* Default width of the player box */
+            cursor: pointer; /* Indicate that the entire box is clickable */
+            transition: background-color 0.3s ease; /* Background color transition */
         }
 
         .music-player-container:hover {
-             background-color: rgba(70, 130, 180, 1); /* Warna lebih solid saat hover */
+             background-color: rgba(70, 130, 180, 1); /* Solid color on hover */
         }
 
         .music-controls {
             display: flex;
             align-items: center;
-            gap: 8px; /* Jarak antar tombol kontrol */
+            gap: 8px; /* Space between control buttons */
         }
 
         .music-player-container button {
             background: none;
             border: none;
             color: white;
-            font-size: 1.2em; /* Ukuran ikon tombol play/pause/prev/next */
+            font-size: 1.2em; /* Size of play/pause/prev/next button icons */
             cursor: pointer;
             transition: color 0.3s ease, transform 0.1s ease;
-            padding: 5px; /* Memberi area klik yang lebih besar */
-            border-radius: 50%; /* Membuat tombol lebih bulat */
+            padding: 5px; /* Provide larger clickable area */
+            border-radius: 50%; /* Make buttons more circular */
         }
 
         .music-player-container button:hover {
             color: #ADD8E6;
-            transform: scale(1.1); /* Efek membesar saat hover */
+            transform: scale(1.1); /* Grow effect on hover */
         }
 
         .music-player-container button:active {
-            transform: scale(0.9); /* Efek ditekan */
+            transform: scale(0.9); /* Pressed effect */
         }
 
         .music-info {
             display: flex;
             flex-direction: column;
-            align-items: flex-start; /* Sejajarkan teks ke kiri */
-            flex-grow: 1; /* Biarkan info mengambil ruang yang tersedia */
-            overflow: hidden; /* Memastikan teks scrolling tidak keluar */
+            align-items: flex-start; /* Align text to the left */
+            flex-grow: 1; /* Let info take available space */
+            overflow: hidden; /* Ensure scrolling text stays within bounds */
         }
 
         #currentSongTitle {
             color: white;
             font-size: 0.95em;
-            white-space: nowrap; /* Jangan memutus baris teks */
-            overflow: hidden; /* Sembunyikan teks yang melebihi batas */
-            text-overflow: ellipsis; /* Tambahkan elipsis jika teks terlalu panjang */
-            max-width: 150px; /* Lebar maksimal judul lagu */
-            /* Transisi untuk properti yang diubah oleh JavaScript, jika ada */
-            transition: transform 0s linear; /* Tidak ada transisi saat posisi berubah */
-            /* Animasi akan ditambahkan secara dinamis oleh JS */
+            white-space: nowrap; /* Prevent text wrapping */
+            overflow: hidden; /* Hide overflowing text */
+            text-overflow: ellipsis; /* Add ellipsis if text is too long */
+            max-width: 150px; /* Maximum width of song title */
+            /* Transition for properties changed by JavaScript, if any */
+            transition: transform 0s linear; /* No transition when position changes */
+            /* Animation will be added dynamically by JS */
         }
 
-        /* Definisi animasi untuk scrolling teks */
+        /* Animation definition for scrolling text */
         @keyframes scrollText {
-            0% { transform: translateX(0%); } /* Mulai dari posisi awal */
-            100% { transform: translateX(calc(-100% - 10px)); } /* Geser ke kiri hingga teks hilang, tambah sedikit ruang */
+            0% { transform: translateX(0%); } /* Start from initial position */
+            100% { transform: translateX(calc(-100% - 10px)); } /* Shift left until text is gone, add a little space */
         }
 
-        /* Class yang akan diterapkan saat teks perlu di-scroll */
+        /* Class to be applied when text needs to scroll */
         .scrolling-text {
             animation: scrollText linear infinite;
         }
 
-        /* Mengatur durasi animasi berdasarkan panjang teks */
-        /* Ini akan diatur dinamis di JavaScript, ini hanya default/fallback */
+        /* Set animation duration based on text length */
+        /* This will be set dynamically in JavaScript, this is just a default/fallback */
         .scrolling-text[data-duration] {
             animation-duration: var(--scroll-duration, 10s);
         }
 
         #musicTime {
-            color: #f0f0f0; /* Warna lebih terang untuk status */
+            color: #f0f0f0; /* Lighter color for status */
             font-size: 0.8em;
         }
 
-        /* Responsif untuk player musik */
+        /* Responsive for music player */
         @media (max-width: 768px) {
             .music-player-wrapper {
                 bottom: 10px;
@@ -521,14 +535,14 @@
                 gap: 5px;
             }
             .music-player-container {
-                width: auto; /* Biarkan lebar menyesuaikan konten */
+                width: auto; /* Let width adjust to content */
                 padding: 8px 12px;
             }
             .music-player-container button {
                 font-size: 1.1em;
             }
             #currentSongTitle {
-                max-width: 100px; /* Batasan lebar judul lagu di mobile */
+                max-width: 100px; /* Max width for song title on mobile */
                 font-size: 0.85em;
             }
             #musicTime {
@@ -536,10 +550,10 @@
             }
         }
 
-        /* --- Styling untuk Bagian Timeline Kisah Kita --- */
+        /* --- Styling for Our Story Timeline Section --- */
         .our-story-timeline {
             padding: 80px 0;
-            background-color: #f0f7fb; /* Latar belakang biru sangat muda */
+            background-color: #f0f7fb; /* Very light blue background */
             text-align: center;
         }
 
@@ -557,47 +571,47 @@
             padding: 20px 0;
         }
 
-        /* Garis vertikal di tengah timeline */
+        /* Vertical line in the middle of the timeline */
         .timeline-container::after {
             content: '';
             position: absolute;
             width: 4px;
-            background-color: #87CEEB; /* Biru langit untuk garis timeline */
+            background-color: #87CEEB; /* Sky blue for timeline line */
             top: 0;
             bottom: 0;
             left: 50%;
-            margin-left: -2px;
+            margin-left: -2px; /* Pusatkan garis (setengah dari lebar garis) */
             border-radius: 2px;
         }
 
-        /* Item tunggal di timeline */
+        /* Single item in the timeline */
         .timeline-item {
             padding: 10px 40px;
             position: relative;
             background-color: inherit;
             width: 50%;
-            box-sizing: border-box; /* Pastikan padding termasuk dalam lebar */
-            opacity: 0; /* Mulai tak terlihat */
-            transform: translateY(20px); /* Mulai sedikit di bawah */
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Animasi muncul */
+            box-sizing: border-box; /* Ensure padding is included in width */
+            opacity: 0; /* Start invisible */
+            transform: translateY(20px); /* Start slightly below */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Fade-in animation */
         }
 
-        .timeline-item.is-visible { /* Kelas untuk memicu animasi saat terlihat */
+        .timeline-item.is-visible { /* Class to trigger animation when visible */
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Kontainer konten di dalam item timeline */
+        /* Content container inside timeline item */
         .timeline-content {
             padding: 20px 30px;
             background-color: #fff;
             position: relative;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            text-align: left; /* Teks dalam konten item tetap rata kiri */
+            text-align: left; /* Text within item content remains left-aligned */
         }
 
-        /* Tanggal di timeline */
+        /* Date in timeline */
         .timeline-date {
             color: #4682B4;
             font-weight: bold;
@@ -617,49 +631,49 @@
             margin: 0;
         }
 
-        /* Dot atau lingkaran pada garis timeline */
+        /* Dot or circle on the timeline line */
         .timeline-item::after {
             content: '';
             position: absolute;
             width: 25px;
             height: 25px;
-            background-color: #ADD8E6; /* Biru muda */
-            border: 4px solid #4682B4; /* Biru baja */
-            top: 15px;
+            background-color: #ADD8E6; /* Light blue */
+            border: 4px solid #4682B4; /* Steel blue */
+            top: 19.5px; /* Disesuaikan untuk posisi vertikal yang lebih simetris */
             border-radius: 50%;
-            z-index: 1; /* Pastikan di atas garis */
+            z-index: 1; /* Ensure it's above the line */
         }
 
-        /* Penempatan item di sisi kiri */
+        /* Item placement on the left side */
         .timeline-item:nth-child(odd) {
             left: 0;
             padding-right: 70px;
         }
 
         .timeline-item:nth-child(odd)::after {
-            right: -13px; /* Sesuaikan posisi dot di sisi kiri */
-            left: auto; /* Pastikan tidak ada konflik dengan 'left: 50%' dari container::after */
+            right: -12.5px; /* Disesuaikan agar dot benar-benar di tengah garis vertikal */
+            left: auto; /* Ensure no conflict with 'left: 50%' from container::after */
         }
 
         .timeline-item:nth-child(odd) .timeline-content {
             margin-left: 0;
         }
 
-        /* Penempatan item di sisi kanan */
+        /* Item placement on the right side */
         .timeline-item:nth-child(even) {
             left: 50%;
             padding-left: 70px;
         }
 
         .timeline-item:nth-child(even)::after {
-            left: -13px; /* Sesuaikan posisi dot di sisi kanan */
+            left: -12.5px; /* Disesuaikan agar dot benar-benar di tengah garis vertikal */
         }
 
         .timeline-item:nth-child(even) .timeline-content {
             margin-left: 0;
         }
 
-        /* Panah indikator untuk setiap item */
+        /* Arrow indicator for each item */
         .timeline-item:nth-child(odd) .timeline-content::before {
             content: '';
             position: absolute;
@@ -680,37 +694,37 @@
             border-color: transparent #fff transparent transparent;
         }
 
-        /* Responsif Timeline */
+        /* Responsive Timeline */
         @media (max-width: 768px) {
             .timeline-container::after {
-                left: 20px; /* Garis timeline geser ke kiri */
+                left: 20px; /* Timeline line shifts to the left */
             }
 
             .timeline-item {
-                width: 100%; /* Setiap item mengisi lebar penuh */
-                padding-left: 60px; /* Padding kiri untuk konten */
-                padding-right: 10px; /* Sedikit padding kanan */
-                left: 0% !important; /* Pastikan semua item berada di sisi kiri */
+                width: 100%; /* Each item takes full width */
+                padding-left: 60px; /* Left padding for content */
+                padding-right: 10px; /* Slight right padding */
+                left: 0% !important; /* Ensure all items are on the left side */
             }
 
             .timeline-item::after {
-                left: 13px !important; /* Sesuaikan posisi dot */
+                left: 7.5px !important; /* Disesuaikan untuk posisi dot di mobile */
             }
 
             .timeline-item .timeline-content::before {
-                left: 45px !important; /* Sesuaikan panah */
+                left: 45px !important; /* Adjust arrow */
                 border-width: 10px 10px 10px 0 !important;
                 border-color: transparent #fff transparent transparent !important;
             }
         }
     </style>
-    <!-- Font Awesome untuk ikon media sosial dan ikon play/pause -->
+    <!-- Font Awesome for social media icons and play/pause icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
     <!-- Website Header Section -->
-    <header>
+    <header id="mainHeader"> <!-- Tambahkan ID untuk referensi JS -->
         <div class="container">
             <h1>Kisah Kita</h1>
             <nav>
@@ -988,23 +1002,46 @@
         const fadeInElements = document.querySelectorAll('.fade-in-section');
         const timelineItems = document.querySelectorAll('.timeline-item');
 
-        const observerOptions = {
+        // Observer untuk elemen fade-in umum (galeri, dll.)
+        const generalObserverOptions = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.2
+            threshold: 0.2 // Pemicu saat 20% elemen terlihat
         };
 
-        const observer = new IntersectionObserver((entries, observer) => {
+        const generalObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
+                    // Tidak diobservasi agar animasi hanya berjalan sekali jika sudah terlihat
+                    generalObserver.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, generalObserverOptions);
 
-        fadeInElements.forEach(el => observer.observe(el));
-        timelineItems.forEach(el => observer.observe(el));
+        fadeInElements.forEach(el => generalObserver.observe(el));
+
+        // Observer untuk item timeline (agar bisa re-trigger)
+        const timelineObserverOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: [0, 1] // Pemicu saat elemen masuk (0) atau keluar (1) viewport sepenuhnya
+        };
+
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Jika elemen masuk viewport
+                    entry.target.classList.add('is-visible');
+                } else {
+                    // Jika elemen keluar viewport
+                    entry.target.classList.remove('is-visible');
+                }
+            });
+        }, timelineObserverOptions);
+
+        timelineItems.forEach(el => timelineObserver.observe(el));
+
 
         // --- JavaScript untuk Smooth Scrolling ---
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1124,6 +1161,21 @@
         document.addEventListener('DOMContentLoaded', () => {
             backgroundMusic.volume = 0.5;
             loadAndPlayTrack(0);
+
+            // --- JavaScript for Auto-Hide Header ---
+            const mainHeader = document.getElementById('mainHeader');
+            let lastScrollY = window.scrollY;
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > lastScrollY) {
+                    // Scrolling down
+                    mainHeader.classList.add('header-hidden');
+                } else {
+                    // Scrolling up
+                    mainHeader.classList.remove('header-hidden');
+                }
+                lastScrollY = window.scrollY;
+            });
         });
     </script>
 
