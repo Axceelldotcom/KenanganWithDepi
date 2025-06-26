@@ -1175,17 +1175,19 @@
                 let currentScrollY = window.scrollY;
                 const homepageOffsetTop = homeSection.offsetTop; // Get the top position of the homepage section
 
-                // Only apply hide/show logic when scrolling past the homepage section
+                // Logika baru untuk menyembunyikan/menampilkan header berdasarkan homepage
                 if (currentScrollY > homepageOffsetTop) {
+                    // Jika sudah melewati homepage ke bawah
                     if (currentScrollY > lastScrollY) {
-                        // Scrolling down, hide header
+                        // Scrolling ke bawah, sembunyikan header
                         mainHeader.classList.add('header-hidden');
                     } else {
-                        // Scrolling up, show header
-                        mainHeader.classList.remove('header-hidden');
+                        // Scrolling ke atas, tapi masih di bawah homepage, tetap sembunyi
+                        // Ini adalah kondisi yang ingin Anda pertahankan
                     }
                 } else {
-                    // If at or above the homepage section, always show header
+                    // Jika di homepage atau scroll ke atas melewati homepage
+                    // Selalu tampilkan header
                     mainHeader.classList.remove('header-hidden');
                 }
 
