@@ -786,7 +786,7 @@
                     <div class="timeline-item">
                         <div class="timeline-content">
                             <span class="timeline-date">3 Juni 2025</span>
-                            <h3>Foto Studio Bersama</h3>
+                            <h3>Foto Studio Pertama</h3>
                             <p>Momen manis pertama kali kita berpose bersama di studio, mengabadikan senyum dan cinta kita dalam bingkai.</p>
                         </div>
                     </div>
@@ -795,17 +795,17 @@
                     <div class="timeline-item">
                         <div class="timeline-content">
                             <span class="timeline-date">7 Juni 2025</span>
-                            <h3>First Date</h3>
+                            <h3>Kencan Pertama</h3>
                             <p>Kencan resmi pertama kami sebagai pasangan. Setiap detik terasa istimewa dan penuh cerita baru.</p>
                         </div>
                     </div>
 
-                    <!-- Event 6: Liburan Pantai -->
+                    <!-- Event 6: Liburan Pantai Pertama -->
                     <div class="timeline-item">
                         <div class="timeline-content">
                             <span class="timeline-date">20 Juni 2025</span>
                             <h3>Liburan Seru di Pantai</h3>
-                            <p>Petualangan pantai pertama kami, menikmati pasir pantai, deburan ombak, dan indahnya senja berdua.</p>
+                            <p>Petualangan pantai pertama kami, menikmati pasir putih, deburan ombak, dan indahnya senja berdua.</p>
                         </div>
                     </div>
 
@@ -905,7 +905,7 @@
                         </div>
                     </div>
 
-                    <!-- Gallery Item: Beach Vacation (Image) -->
+                    <!-- Gallery Item: Liburan Pantai Pertama (Image) -->
                     <!-- Add 'fade-in-section' class for scroll animation -->
                     <div class="gallery-item fade-in-section">
                         <div class="media-container">
@@ -913,8 +913,20 @@
                             <img src="https://i.imgur.com/CYtPCfA.jpeg" alt="Liburan Pantai">
                         </div>
                         <div class="content-text">
-                            <h3>Liburan Seru di Pantai</h3>
+                            <h3>Liburan Seru di Pantai (1)</h3>
                             <p>Tertawa lepas menikmati ombak dan senja. Musim panas 2025.</p>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item: Liburan Pantai Kedua (Image Baru) -->
+                    <!-- Add 'fade-in-section' class for scroll animation -->
+                    <div class="gallery-item fade-in-section">
+                        <div class="media-container">
+                            <img src="https://i.imgur.com/0zbJd4T.jpeg" alt="Liburan Pantai Kedua">
+                        </div>
+                        <div class="content-text">
+                            <h3>Liburan Seru di Pantai (2)</h3>
+                            <p>Petualangan pantai berdua yang semakin manis. Juli 2025.</p>
                         </div>
                     </div>
 
@@ -1173,18 +1185,16 @@
 
             window.addEventListener('scroll', () => {
                 let currentScrollY = window.scrollY;
-                const homepageOffsetTop = homeSection.offsetTop; // Get the top position of the homepage section
+                const homepageOffsetBottom = homeSection.offsetTop + homeSection.offsetHeight; // Get the bottom position of the homepage section
 
-                // Logika baru untuk menyembunyikan/menampilkan header berdasarkan homepage
-                if (currentScrollY > homepageOffsetTop) {
+                if (currentScrollY > homepageOffsetBottom) {
                     // Jika sudah melewati homepage ke bawah
                     if (currentScrollY > lastScrollY) {
                         // Scrolling ke bawah, sembunyikan header
                         mainHeader.classList.add('header-hidden');
-                    } else {
-                        // Scrolling ke atas, tapi masih di bawah homepage, tetap sembunyi
-                        // Ini adalah kondisi yang ingin Anda pertahankan
                     }
+                    // Jika scrolling ke atas tapi masih di bawah homepage, tetap sembunyi
+                    // Kecuali jika mencapai homepage lagi
                 } else {
                     // Jika di homepage atau scroll ke atas melewati homepage
                     // Selalu tampilkan header
